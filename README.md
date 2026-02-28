@@ -1,57 +1,59 @@
 # US Address Generator
 
-A command-line tool that generates realistic US addresses for testing and form-filling purposes.
+随机生成逼真的美国地址信息，用于测试和表单填写等场景。
 
-**Single-file Python 3 script with zero dependencies** — only uses the standard library.
+**单文件 Python 3 脚本，零依赖** — 仅使用标准库。
 
-## Features
+[English](README_EN.md)
 
-- Generates complete US address profiles: name, street, apartment, city, state, ZIP, phone, email
-- Built-in real data for all 50 states + DC (cities, ZIP code ranges, area codes)
-- **Defaults to tax-free states** (OR, MT, NH, DE, AK) when no state is specified
-- Supports text and JSON output formats
-- Batch generation with `--count`
+## 特性
 
-## Installation
+- 生成完整的美国地址信息：姓名、街道、公寓号、城市、州、邮编、电话、邮箱
+- 内置全部 50 州 + DC 的真实数据（城市、邮编范围、区号）
+- **默认从免税州生成**（OR、MT、NH、DE、AK）
+- 支持文本和 JSON 两种输出格式
+- 支持批量生成
+
+## 安装
 
 ```bash
 git clone https://github.com/zchdu/us-address-generator.git
 cd us-address-generator
 ```
 
-No dependencies to install — just Python 3.
+无需安装任何依赖，只需 Python 3。
 
-## Usage
+## 使用方法
 
 ```bash
-# Generate 1 address (random tax-free state)
+# 生成 1 个地址（随机免税州）
 python3 us_address_generator.py
 
-# Generate 5 addresses
+# 生成 5 个地址
 python3 us_address_generator.py -n 5
 
-# Specify a state
+# 指定州
 python3 us_address_generator.py -s CA
 
-# JSON output
+# JSON 格式输出
 python3 us_address_generator.py -n 3 -f json
 
-# Combine options
+# 组合使用
 python3 us_address_generator.py -n 2 -s NY -f json
 ```
 
-### CLI Options
+### 命令行参数
 
-| Option | Description |
-|--------|-------------|
-| `-n`, `--count` | Number of addresses to generate (default: 1) |
-| `-s`, `--state` | State abbreviation (e.g., `CA`, `NY`). Defaults to tax-free states |
-| `-f`, `--format` | Output format: `text` (default) or `json` |
-| `-h`, `--help` | Show help message |
+| 参数 | 说明 |
+|------|------|
+| `-n`, `--count` | 生成数量（默认 1） |
+| `-s`, `--state` | 指定州缩写（如 `CA`、`NY`），不指定则从免税州随机选取 |
+| `-f`, `--format` | 输出格式：`text`（默认）或 `json` |
+| `-h`, `--help` | 显示帮助信息 |
 
-## Output Examples
+## 输出示例
 
-### Text Format (default)
+### 文本格式（默认）
 
 ```
 John Smith
@@ -61,7 +63,7 @@ Phone: (213) 555-1234
 Email: john.smith@gmail.com
 ```
 
-### JSON Format (`-f json`)
+### JSON 格式（`-f json`）
 
 ```json
 {
@@ -77,30 +79,30 @@ Email: john.smith@gmail.com
 }
 ```
 
-When generating multiple addresses with `-f json`, results are returned as a JSON array.
+批量生成时（`-n` > 1），JSON 输出为数组格式。
 
-## Generated Fields
+## 生成字段说明
 
-| Field | Generation Method |
-|-------|-------------------|
-| Name | Random first + last from common US name pools |
-| Street | Random house number + street name + type (St/Ave/Blvd/Dr/...), optional direction prefix |
-| Apartment | 25% chance of appearing, with random format (Apt/Suite/Unit/#) |
-| City | Real cities matched to the selected state |
-| State | Full 50 states + DC support with abbreviations |
-| ZIP Code | Generated within the state's real ZIP code range |
-| Phone | Uses real area codes for the selected state |
-| Email | Derived from the generated name with random domain |
+| 字段 | 生成方式 |
+|------|---------|
+| 姓名 | 从常见美国姓名库随机组合 |
+| 街道 | 随机门牌号 + 街道名 + 类型（St/Ave/Blvd/Dr/...），可能带方向前缀 |
+| 公寓号 | 25% 概率出现，随机格式（Apt/Suite/Unit/#） |
+| 城市 | 按所选州匹配真实城市 |
+| 州 | 支持全部 50 州 + DC |
+| 邮编 | 在该州真实邮编范围内生成 |
+| 电话 | 使用该州真实区号 |
+| 邮箱 | 基于生成的姓名 + 随机域名 |
 
-## Tax-Free States
+## 免税州
 
-When no `--state` is specified, the generator randomly picks from states with no sales tax:
+未指定 `--state` 时，默认从以下无消费税的州中随机选取：
 
-- **Oregon (OR)**
-- **Montana (MT)**
-- **New Hampshire (NH)**
-- **Delaware (DE)**
-- **Alaska (AK)**
+- **Oregon (OR)** — 俄勒冈
+- **Montana (MT)** — 蒙大拿
+- **New Hampshire (NH)** — 新罕布什尔
+- **Delaware (DE)** — 特拉华
+- **Alaska (AK)** — 阿拉斯加
 
 ## License
 
