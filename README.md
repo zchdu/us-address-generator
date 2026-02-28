@@ -15,7 +15,7 @@ A command-line tool that generates realistic US addresses for testing and form-f
 ## Installation
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/us-address-generator.git
+git clone https://github.com/zchdu/us-address-generator.git
 cd us-address-generator
 ```
 
